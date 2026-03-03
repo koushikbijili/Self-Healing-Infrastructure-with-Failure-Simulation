@@ -134,6 +134,8 @@ sudo systemctl stop nginx
 sudo apt install stress -y
 stress --cpu 2 --timeout 300
 ```
+<img width="761" height="66" alt="Screenshot 2026-02-27 122603" src="https://github.com/user-attachments/assets/4bbf563b-6015-4de0-b49f-124e2a2b54c6" />
+
 <img width="1896" height="554" alt="Screenshot 2026-02-27 141532" src="https://github.com/user-attachments/assets/009054af-e466-44c8-92ef-6dccdb4afd70" />
 
 
