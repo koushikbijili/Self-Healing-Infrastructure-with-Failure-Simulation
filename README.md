@@ -20,18 +20,40 @@ Failures were intentionally introduced to validate automated recovery behavior u
 
 ## 🏗 Architecture
 
-User
-↓
-Application Load Balancer
-↓
-Auto Scaling Group
-↓
-EC2 Instances (Nginx)
+```
+[User]
+   ↓
+[Route 53 (DNS resolves to ALB)]
+   ↓
+[Application Load Balancer]
+   ↓
+[Forward to Healthy EC2 (Target Group)]
+   ↓
+[Response to User]
+
+```
 
 ![project3](https://github.com/user-attachments/assets/ae6c9ebd-808a-417d-889d-2010abd57fc2)
 
+**(with failure handling — more realistic)**
 
----
+```
+[User]
+   ↓
+[Route 53 (DNS → ALB)]
+   ↓
+[Application Load Balancer]
+   ↓
+[Healthy Targets Available?]
+
+   ├── No → [ASG terminates unhealthy EC2 and launches new ones]
+   │
+   └── Yes
+         ↓
+   [Forward request to EC2 (Nginx)]
+         ↓
+   [Response to User]
+```
 
 # 🛠 Implementation
 
